@@ -45,7 +45,7 @@ void do_process(char *name, pid_t *pid, int exec_time){
         int Pid = (int)getpid();
         printf("%s %d\n", name, Pid);
         fflush(stdout);
-	    long start_sec, start_nsec, end_sec, end_nsec;
+	long start_sec, start_nsec, end_sec, end_nsec;
         syscall(GET_SYSTEM_TIME, &start_sec, &start_nsec);
         for(int i = 0; i < exec_time; i ++){
             unit_of_time();
@@ -59,7 +59,7 @@ void do_process(char *name, pid_t *pid, int exec_time){
     else if(*pid > 0){
         fflush(stderr);
         set_low_priority(*pid);
-	    allocate_CPU(*pid, PROCESS_CPU);
+	allocate_CPU(*pid, PROCESS_CPU);
     }
 
     /* fork error */
